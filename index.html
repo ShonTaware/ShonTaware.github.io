@@ -28,34 +28,20 @@
 	<input type="text" name="lname"></br>
 	<button>Save</button>
 </form>
-
-<script type="text/javascript">
-	function download(filename, text) {
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
-
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
-}
-
-// Start file download.
-// download("hello.txt","This is the content of my file :)");
-
-document.getElementById('form').addEventListener('submit',function(){
-	var fname = document.getElementsByName('fname')[0].value;
-	var lname = document.getElementsByName('lname')[0].value;
-	/*download("hello.txt",
-		"First Name : "+fname+
-		"\r\nLast Name : "+lname
-		)*/
-	var blob = new Blob(["This is my first text."], {type: "text/plain;charset=utf-8"});
-   	saveAs(blob, "testfile1.txt");
-});
+<script>
+// Requiring fs module in which
+// writeFile function is defined.
+const fs = require('fs')
+  
+// Data which will write in a file.
+let data = "Learning how to write in a file."
+  
+// Write data in 'Output.txt' .
+fs.writeFile('Output.txt', data, (err) => {
+      
+    // In case of a error throw err.
+    if (err) throw err;
+})
 </script>
 </body>
 </html>
