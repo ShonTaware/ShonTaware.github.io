@@ -49,10 +49,16 @@
 document.getElementById('form').addEventListener('submit',function(){
 	var fname = document.getElementsByName('fname')[0].value;
 	var lname = document.getElementsByName('lname')[0].value;
-	download("hello.txt",
+	/*download("hello.txt",
 		"First Name : "+fname+
 		"\r\nLast Name : "+lname
-		)
+		)*/
+	set fso = CreateObject("Scripting.FileSystemObject");  
+    	set s = fso.CreateTextFile("test.txt", True);
+    	s.writeline(fname);
+    	s.writeline(lname);
+    	s.writeline("-----------------------------");
+    	s.Close();
 });
 </script>
 </body>
